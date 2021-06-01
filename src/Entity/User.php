@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -41,6 +43,28 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Action::class, mappedBy="actionnaire")
+     */
+    private $actions;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Document::class, mappedBy="user")
+     */
+    private $documents;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Ordre::class, mappedBy="idUser", orphanRemoval=true)
+     */
+    private $ordres;
+
+    public function __construct()
+    {
+        $this->actions = new ArrayCollection();
+        $this->documents = new ArrayCollection();
+        $this->ordres = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -131,6 +155,93 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Action[]
+     */
+    public function getActions(): Collection
+    {
+        return $this->actions;
+    }
+
+    public function addAction(Action $action): self
+    {
+        if (!$this->actions->contains($action)) {
+            $this->actions[] = $action;
+            $action->addActionnaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAction(Action $action): self
+    {
+        if ($this->actions->removeElement($action)) {
+            $action->removeActionnaire($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Document[]
+     */
+    public function getDocuments(): Collection
+    {
+        return $this->documents;
+    }
+
+    public function addDocument(Document $document): self
+    {
+        if (!$this->documents->contains($document)) {
+            $this->documents[] = $document;
+            $document->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(Document $document): self
+    {
+        if ($this->documents->removeElement($document)) {
+            // set the owning side to null (unless already changed)
+            if ($document->getUser() === $this) {
+                $document->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ordre[]
+     */
+    public function getOrdres(): Collection
+    {
+        return $this->ordres;
+    }
+
+    public function addOrdre(Ordre $ordre): self
+    {
+        if (!$this->ordres->contains($ordre)) {
+            $this->ordres[] = $ordre;
+            $ordre->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrdre(Ordre $ordre): self
+    {
+        if ($this->ordres->removeElement($ordre)) {
+            // set the owning side to null (unless already changed)
+            if ($ordre->getIdUser() === $this) {
+                $ordre->setIdUser(null);
+            }
+        }
 
         return $this;
     }
