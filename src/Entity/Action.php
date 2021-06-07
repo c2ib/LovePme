@@ -30,9 +30,15 @@ class Action
      */
     private $actionnaire;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="codeAction", orphanRemoval=true)
+     */
+    private $annonces;
+
     public function __construct()
     {
         $this->actionnaire = new ArrayCollection();
+        $this->annonces = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -72,6 +78,36 @@ class Action
     public function removeActionnaire(User $actionnaire): self
     {
         $this->actionnaire->removeElement($actionnaire);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Annonce[]
+     */
+    public function getAnnonces(): Collection
+    {
+        return $this->annonces;
+    }
+
+    public function addAnnonce(Annonce $annonce): self
+    {
+        if (!$this->annonces->contains($annonce)) {
+            $this->annonces[] = $annonce;
+            $annonce->setCodeAction($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnonce(Annonce $annonce): self
+    {
+        if ($this->annonces->removeElement($annonce)) {
+            // set the owning side to null (unless already changed)
+            if ($annonce->getCodeAction() === $this) {
+                $annonce->setCodeAction(null);
+            }
+        }
 
         return $this;
     }
