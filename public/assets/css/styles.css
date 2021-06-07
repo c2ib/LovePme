@@ -1,0 +1,58 @@
+.example-wrapper {
+    margin: 1em auto;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    font: 18px/1.5 sans-serif;
+}
+
+.example-wrapper code {
+    background: #F5F5F5;
+    padding: 2px 6px;
+}
+h1{
+    text-align: center; 
+    color: blue;
+}
+.sr-only{
+    color: blue;
+    width: 1000px;
+}
+p{
+    text-align: left;
+}
+.wpsm_team_1_name_divider {
+    background-color: #444444;
+    height: 2px;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+    width: 60px;
+}
+.wpsm_team_1_b_desig {
+    margin-bottom: 10px;
+    margin-top: 0px;
+    color: #444;
+    text-align: center;
+}
+.bg-register-image {
+    background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .bg-password-image {
+    background: url("https://source.unsplash.com/oWTW-jNGl9I/600x800");
+    background-position: center;
+    background-size: cover;
+  }
+  form.user .form-control-user {
+    font-size: 0.8rem;
+    border-radius: 10rem;
+    padding: 1.5rem 1rem;
+  }
+  form.user .btn-user {
+    font-size: 0.8rem;
+    border-radius: 10rem;
+    padding: 0.75rem 1rem;
+  }

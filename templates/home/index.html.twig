@@ -1,42 +1,131 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello HomeController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper {
-        margin: 1em auto;
-        max-width: 800px;
-        width: 95%;
-        font: 18px/1.5 sans-serif;
-    }
-
-    .example-wrapper code {
-        background: #F5F5F5;
-        padding: 2px 6px;
-    }
-</style>
-
-<div class="example-wrapper">
-
-    <div class="container">
-    <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">{{ message }}</div>
-    {% endfor %}
-     <h1>Hello {{ controller_name }}! ✅</h1>
-
-    {# This friendly message is coming from: #}
-    {# <ul> #}
-    {# <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/lovepme/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li> #}
-    {# <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/lovepme/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li> #}
-    {# </ul> #}
-</div>
-    <div class="col-md-3"></div>
-    </div>
-    </div>
-</div>
+        <header class="py-5">
+            <div class="container px-lg-5">
+                <div class="p-4 p-lg-5 rounded-3 text-center">
+                    <div class="m-4 m-lg-5">
+                        <h1 class="display-5 fw-bold">A warm welcome!</h1>
+                        <img class="example-wrapper" src="https://ciib.online/wp-content/uploads/2020/09/Gaye-MBOUP.jpg"/>
+                        {# <a class="btn btn-primary btn-lg" href="#!">Call to action</a> #}
+                    </div>
+                </div>
+            </div>
+        </header>
+          <div class="container px-lg-5">
+                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                    <div class="m-4 m-lg-5">
+                        <h1 class="display-5 fw-bold">Vision</h1>
+                        <p>CiiB accompagne depuis 35 ans des PME-PMI de croissance de toutes tailles et de tous secteurs, souhaitant grandir et conserver leur pleine indépendance de gestion, du private equity jusqu’à la cotation en bourse, sur l’ensemble de leurs enjeux financiers : levées de fonds, ingénierie juridique & financière, communication corporate & financière, liquidité et valorisation.</p>
+                        <p>CiiB propose également aux dirigeants d’entreprises non cotées une offre de formation complète afin de les préparer aux enjeux et aux différents mécanismes boursiers et financiers.</p>
+                        <p>Après des levées de fonds réussies, CiiB est à même d’accompagner ensuite l’entreprise jusqu’à la cotation en bourse.</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="container px-lg-5">
+                <div class="p-4 p-lg-5 rounded-3 text-center">
+                <div class="m-4 m-lg-5">
+                        <h1 class="display-5 fw-bold">Equipe</h1>
+                        <p>Le cabinet, fondé par Jean SALWA, à l’origine de la création du Second Marché en 1983 et de l’important mouvement d’actionnariat populaire dans les PME-PMI, est dirigé par Didier SALWA.</p>
+                        <p>Il est indépendant et composé de collaborateurs expérimentés en ingénierie, communication, et analyse financière. CiiB possède une intime connaissance des mécanismes boursiers et financiers. Son expérience lui permet de proposer un accompagnement total sur l’ensemble des sujets de développement des fonds propres, de notoriété et de liquidité du capital.</p>
+                        <p>Nos équipes restent disponibles en télétravail et joignables par téléphone, par mail, et par Skype sur leurs coordonnées habituelles.</p>
+                    </div>
+                </div>
+            </div>
+        <!-- Page Content-->
+        <section class="pt-4">
+            <div class="container px-lg-5">
+                <!-- Page Features-->
+                <div class="row gx-lg-5">
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-collection"></i></div>
+                                <h2 class="fs-4 fw-bold">Fresh new layout</h2>
+                                <img class="card-img-top" class="example-wrapper" src="https://ciib.online/wp-content/uploads/2020/09/Gaye-MBOUP.jpg"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">Gaye MBOUP</h5>
+                                    <div class="wpsm_team_1_name_divider"></div>
+                                    <p class="wpsm_team_1_b_desig">Développeur full-stack.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-cloud-download"></i></div>
+                                <h2 class="fs-4 fw-bold">Free to download</h2>
+                                <img class="card-img-top" class="example-wrapper" src="https://ciib.online/wp-content/uploads/2020/09/Gaye-MBOUP.jpg"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">Gaye MBOUP</h5>
+                                    <div class="wpsm_team_1_name_divider"></div>
+                                    <p class="wpsm_team_1_b_desig">Développeur full-stack.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-card-heading"></i></div>
+                                <h2 class="fs-4 fw-bold">Jumbotron hero header</h2>
+                                <img class="card-img-top" class="example-wrapper" src="https://ciib.online/wp-content/uploads/2020/09/Gaye-MBOUP.jpg"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">Gaye MBOUP</h5>
+                                    <div class="wpsm_team_1_name_divider"></div>
+                                    <p class="wpsm_team_1_b_desig">Développeur full-stack.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-bootstrap"></i></div>
+                                <h2 class="fs-4 fw-bold">Feature boxes</h2>
+                                <img class="card-img-top" class="example-wrapper" src="https://ciib.online/wp-content/uploads/2020/09/Gaye-MBOUP.jpg"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">Gaye MBOUP</h5>
+                                    <div class="wpsm_team_1_name_divider"></div>
+                                    <p class="wpsm_team_1_b_desig">Développeur full-stack.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-code"></i></div>
+                                <h2 class="fs-4 fw-bold">Simple clean code</h2>
+                                <img class="card-img-top" class="example-wrapper" src="https://ciib.online/wp-content/uploads/2020/09/Gaye-MBOUP.jpg"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">Gaye MBOUP</h5>
+                                    <div class="wpsm_team_1_name_divider"></div>
+                                    <p class="wpsm_team_1_b_desig">Développeur full-stack.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-patch-check"></i></div>
+                                <h2 class="fs-4 fw-bold">A name you trust</h2>
+                                <img class="card-img-top" class="example-wrapper" src="https://ciib.online/wp-content/uploads/2020/09/Gaye-MBOUP.jpg"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">Gaye MBOUP</h5>
+                                    <div class="wpsm_team_1_name_divider"></div>
+                                    <p class="wpsm_team_1_b_desig">Développeur full-stack.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 {% endblock %}
