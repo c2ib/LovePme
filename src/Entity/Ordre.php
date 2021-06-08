@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\OrdreRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=OrdreRepository::class)
@@ -48,6 +49,21 @@ class Ordre
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateLimite;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=0)
+     */
+    private $prixUnitaire;
 
     public function getId(): ?int
     {
@@ -122,6 +138,42 @@ class Ordre
     public function setDateLimite(?\DateTimeInterface $dateLimite): self
     {
         $this->dateLimite = $dateLimite;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getPrixUnitaire(): ?string
+    {
+        return $this->prixUnitaire;
+    }
+
+    public function setPrixUnitaire(string $prixUnitaire): self
+    {
+        $this->prixUnitaire = $prixUnitaire;
 
         return $this;
     }

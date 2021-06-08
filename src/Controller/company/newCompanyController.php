@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class newCompanyController extends AbstractController
 {
     /**
-     * @Route("/company/new/company", name="company_new_company")
+     * @Route("/admin/new/company", name="company_new_company")
      */
     // public function index(): Response
     // {
