@@ -8,18 +8,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\CompanyRepository;
 
 class newCompanyController extends AbstractController
 {
     /**
-     * @Route("/admin/new/company", name="company_new_company")
+     * @Route("/actionnaire/new/company", name="company_new_company")
      */
-    // public function index(): Response
-    // {
-    //     return $this->render('company/new_company/index.html.twig', [
-    //         'controller_name' => 'newCompanyController',
-    //     ]);
-    // }
     public function newCompany(Request $request): Response
     {
         $company = new Company();
@@ -36,6 +31,19 @@ class newCompanyController extends AbstractController
         }
         return $this->render('company/new_company/index.html.twig', [
             "form" => $form->createView()
+        ]);
+    }
+    /**
+     * @Route("/actionnaire/company", name="company_liste")
+     */
+    public function listeCompany(CompanyRepository $companyRepo)
+    {
+        $companies = $companyRepo->findAll();
+        if (!$companies) {
+            throw $this->createNotFoundException('La table est vide');
+        }
+        return $this->render('company/listeCompany.html.twig', [
+        'companies' => $companies,
         ]);
     }
 }

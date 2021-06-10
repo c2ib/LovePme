@@ -18,6 +18,26 @@ class OrdreRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Ordre::class);
     }
+    /**
+     * Returns all Annonces per page
+     * @return void 
+     */
+    public function getPaginatedAnnonces($page, $limit, $filters = null){
+        $query = $this->createQueryBuilder('a')
+            ->where('a.active = 1');
+
+        // On filtre les données
+        if($filters != null){
+            $query->andWhere('a.categories IN(:cats)')
+                ->setParameter(':cats', array_values($filters));
+        }
+
+        $query->orderBy('a.created_at')
+            ->setFirstResult(($page * $limit) - $limit)
+            ->setMaxResults($limit)
+        ;
+        return $query->getQuery()->getResult();
+    }
 
     // /**
     //  * @return Ordre[] Returns an array of Ordre objects

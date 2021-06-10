@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello newCompanyController!
+{% endblock %}
+
+{% block body %}
+<table class="table caption-top">
+  <caption>List of companies</caption>
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Form legal</th>
+      <th scope="col">siret</th>
+      <th scope="col">rcs</th>
+    </tr>
+  </thead>
+  {% for companie in companies %}
+  <tbody >
+    <tr>
+      <th scope="row">{{ companie.name }}</th>
+      <td>{{ companie.formLegal }}</td>
+      <td>{{ companie.siret}}</td>
+      <td>{{ companie.rcs }}</td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+{# <div class="grix xs2 sm3 gutter-0 card">
+	<div class="primary flex vcenter fx-center"></div>
+	<div class="col-sm2">
+		<div class="card-header"></div>
+		<div class="card-content">
+			<p>companies :
+				{{ companie.name }}</p>
+			<p>
+				{{ companie.description }}
+			</p>
+			<p>
+				<button class="btn primary press modal-trigger" data-target="modale-contact">Contacter l'annonceur</button>
+			</p>
+		</div>
+	</div>
+</div></div></div> #}
+
+{% endblock %}
+

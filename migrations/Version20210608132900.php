@@ -20,7 +20,7 @@ final class Version20210608132900 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE ordre ADD created_at DATETIME NOT NULL, ADD updated_at DATETIME NOT NULL');
+        $this->addSql('ALTER TABLE ordre ADD created_at DATETIME , ADD updated_at DATETIME ');
     }
 
     public function down(Schema $schema): void

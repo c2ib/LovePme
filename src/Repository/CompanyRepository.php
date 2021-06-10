@@ -19,10 +19,9 @@ class CompanyRepository extends ServiceEntityRepository
         parent::__construct($registry, Company::class);
     }
 
-    // /**
-    //  * @return Company[] Returns an array of Company objects
-    //  */
-    /*
+    /**
+     * @return Company[] Returns an array of Company objects
+     */
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('c')
@@ -31,10 +30,8 @@ class CompanyRepository extends ServiceEntityRepository
             ->orderBy('c.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Company
