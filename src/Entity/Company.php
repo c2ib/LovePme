@@ -111,6 +111,10 @@ class Company
         $this->ordres = new ArrayCollection();
     }
 
+    public function to__String(){
+        return $this->name;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

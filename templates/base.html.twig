@@ -29,6 +29,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_logout') }}">logout</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin') }}">admin</a>
+                    </li>
+                           {% if is_granted('ROLE_ADMIN')%} <li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin') }}">creerSociete</a>
+                    </li>{% endif %}
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">Connexion</a>
