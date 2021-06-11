@@ -104,6 +104,91 @@ class Company
      */
     private $ordres;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $turnover;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $creation;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $business;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mainPicture;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $zipcode;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $modified;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $fax;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $website;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $comment;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $oldld;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $faceValue;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $doubleVotingTime;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $activated;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $hasQuotation;
+
     public function __construct()
     {
         $this->actions = new ArrayCollection();
@@ -370,6 +455,210 @@ class Company
                 $ordre->setIdSociete(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTurnover(): ?float
+    {
+        return $this->turnover;
+    }
+
+    public function setTurnover(float $turnover): self
+    {
+        $this->turnover = $turnover;
+
+        return $this;
+    }
+
+    public function getCreation(): ?\DateTimeInterface
+    {
+        return $this->creation;
+    }
+
+    public function setCreation(?\DateTimeInterface $creation): self
+    {
+        $this->creation = $creation;
+
+        return $this;
+    }
+
+    public function getBusiness(): ?string
+    {
+        return $this->business;
+    }
+
+    public function setBusiness(string $business): self
+    {
+        $this->business = $business;
+
+        return $this;
+    }
+
+    public function getMainPicture(): ?string
+    {
+        return $this->mainPicture;
+    }
+
+    public function setMainPicture(string $mainPicture): self
+    {
+        $this->mainPicture = $mainPicture;
+
+        return $this;
+    }
+
+    public function getZipcode(): ?string
+    {
+        return $this->zipcode;
+    }
+
+    public function setZipcode(string $zipcode): self
+    {
+        $this->zipcode = $zipcode;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCreated(): ?\DateTimeInterface
+    {
+        return $this->created;
+    }
+
+    public function setCreated(\DateTimeInterface $created): self
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    public function getModified(): ?\DateTimeInterface
+    {
+        return $this->modified;
+    }
+
+    public function setModified(?\DateTimeInterface $modified): self
+    {
+        $this->modified = $modified;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getFax(): ?string
+    {
+        return $this->fax;
+    }
+
+    public function setFax(string $fax): self
+    {
+        $this->fax = $fax;
+
+        return $this;
+    }
+
+    public function getWebsite(): ?string
+    {
+        return $this->website;
+    }
+
+    public function setWebsite(string $website): self
+    {
+        $this->website = $website;
+
+        return $this;
+    }
+
+    public function getComment(): ?string
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?string $comment): self
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getOldld(): ?int
+    {
+        return $this->oldld;
+    }
+
+    public function setOldld(int $oldld): self
+    {
+        $this->oldld = $oldld;
+
+        return $this;
+    }
+
+    public function getFaceValue(): ?float
+    {
+        return $this->faceValue;
+    }
+
+    public function setFaceValue(float $faceValue): self
+    {
+        $this->faceValue = $faceValue;
+
+        return $this;
+    }
+
+    public function getDoubleVotingTime(): ?int
+    {
+        return $this->doubleVotingTime;
+    }
+
+    public function setDoubleVotingTime(int $doubleVotingTime): self
+    {
+        $this->doubleVotingTime = $doubleVotingTime;
+
+        return $this;
+    }
+
+    public function getActivated(): ?bool
+    {
+        return $this->activated;
+    }
+
+    public function setActivated(bool $activated): self
+    {
+        $this->activated = $activated;
+
+        return $this;
+    }
+
+    public function getHasQuotation(): ?bool
+    {
+        return $this->hasQuotation;
+    }
+
+    public function setHasQuotation(bool $hasQuotation): self
+    {
+        $this->hasQuotation = $hasQuotation;
 
         return $this;
     }

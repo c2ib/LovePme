@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TitleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -86,6 +88,16 @@ class Title
      * @ORM\Column(type="boolean")
      */
     private $convertible;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Emission::class, mappedBy="title", orphanRemoval=true)
+     */
+    private $emissions;
+
+    public function __construct()
+    {
+        $this->emissions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -256,6 +268,36 @@ class Title
     public function setConvertible(bool $convertible): self
     {
         $this->convertible = $convertible;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Emission[]
+     */
+    public function getEmissions(): Collection
+    {
+        return $this->emissions;
+    }
+
+    public function addEmission(Emission $emission): self
+    {
+        if (!$this->emissions->contains($emission)) {
+            $this->emissions[] = $emission;
+            $emission->setTitle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmission(Emission $emission): self
+    {
+        if ($this->emissions->removeElement($emission)) {
+            // set the owning side to null (unless already changed)
+            if ($emission->getTitle() === $this) {
+                $emission->setTitle(null);
+            }
+        }
 
         return $this;
     }
