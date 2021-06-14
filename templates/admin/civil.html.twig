@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="row">
+
+
+<div class="col-md-3 col-lg-3"></div>
+    <div class="col-md-6 col-lg-6">
+        {{ form(form) }}
+        <br><br><br>
+        {% if civilite is defined%}
+        {% for civ in civilite %}<h3>{{ civ.title }}</h3>{% endfor %}
+        {% endif %}
+    </div>
+<div class="col-md-3 col-lg-3"></div>
+    </div>
+</div>
+{% endblock %}

@@ -41,7 +41,6 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            $user->setNom('CIIB');
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);

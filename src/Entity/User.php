@@ -64,10 +64,55 @@ class User implements UserInterface
      */
     private $annonces;
 
+     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $created;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $modified;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $lastLoginDate;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $birthDate;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $zip_code;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $city;
 
     public function __construct()
     {
@@ -287,14 +332,122 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getNom(): ?string
+    public function getCreated(): ?\DateTimeInterface
     {
-        return $this->nom;
+        return $this->created;
     }
 
-    public function setNom(string $nom): self
+    public function setCreated(?\DateTimeInterface $created): self
     {
-        $this->nom = $nom;
+        $this->created = $created;
+
+        return $this;
+    }
+
+    public function getModified(): ?\DateTimeInterface
+    {
+        return $this->modified;
+    }
+
+    public function setModified(?\DateTimeInterface $modified): self
+    {
+        $this->modified = $modified;
+
+        return $this;
+    }
+
+    public function getLastLoginDate(): ?\DateTimeInterface
+    {
+        return $this->lastLoginDate;
+    }
+
+    public function setLastLoginDate(?\DateTimeInterface $lastLoginDate): self
+    {
+        $this->lastLoginDate = $lastLoginDate;
+
+        return $this;
+    }
+
+    public function getBirthDate(): ?\DateTimeInterface
+    {
+        return $this->birthDate;
+    }
+
+    public function setBirthDate(?\DateTimeInterface $birthDate): self
+    {
+        $this->birthDate = $birthDate;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getZipCode(): ?string
+    {
+        return $this->zip_code;
+    }
+
+    public function setZipCode(?string $zip_code): self
+    {
+        $this->zip_code = $zip_code;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }

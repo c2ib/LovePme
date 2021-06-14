@@ -7,24 +7,32 @@
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-{#    <div class="container">#}
-{#        <div class="row">#}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
 
-{#            <div class="col-md-6">#}
-
-                <h1>Register</h1>
+                <h2 style="text-align: center">Inscription au Carnet d'annonces</h2>
     {# {% form_theme form 'foundation_5_layout.html.twig' %} #}
 
-                {{ form_start(registrationForm) }}
-                {{ form_row(registrationForm.email) }}
+                {{ form_start(registrationForm) }}<br>
+                {{ form_row(registrationForm.email) }}<br>
                 {{ form_row(registrationForm.plainPassword, {
                     label: 'Password'
-                }) }}
+                }) }}<br>
+                {{ form_row(registrationForm.lastName, {label: 'prenom'}) }}<br>
+                {{ form_row(registrationForm.firstName, {label: 'nom'}) }}<br>
+                {{ form_row(registrationForm.birthDate)}}<br>
+                {{ form_row(registrationForm.phone)}}<br>
+                {{ form_row(registrationForm.adresse)}}<br>
+                {{ form_row(registrationForm.zip_code,{label:'code postal'})}}<br>
+                {{ form_row(registrationForm.city, {label:'ville'})}}<br>
                 {{ form_row(registrationForm.agreeTerms) }}
 
                 <button type="submit" class="btn btn-primary">Register</button>
                 {{ form_end(registrationForm) }}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
 {% endblock %}

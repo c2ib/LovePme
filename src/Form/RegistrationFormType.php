@@ -3,9 +3,13 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -43,6 +47,15 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('lastName', \Symfony\Component\Form\Extension\Core\Type\TextType::class)
+            ->add('firstName', \Symfony\Component\Form\Extension\Core\Type\TextType::class)
+            ->add('birthDate', DateType::class,['label' => 'date de naissance', 'widget' => 'single_text'])
+            ->add('phone',\Symfony\Component\Form\Extension\Core\Type\TextType::class)
+            ->add('adresse',\Symfony\Component\Form\Extension\Core\Type\TextType::class)
+            ->add('zip_code',\Symfony\Component\Form\Extension\Core\Type\TextType::class)
+            ->add('city',\Symfony\Component\Form\Extension\Core\Type\TextType::class)
+
+
         ;
     }
 

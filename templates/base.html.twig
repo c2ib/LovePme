@@ -5,6 +5,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
+        <link rel="icon" href={{ asset( 'logociib.png' )}}>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
 {#        {% block stylesheets %}#}
@@ -29,6 +30,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_logout') }}">logout</a>
                     </li>
+                            {% if is_granted('ROLE_ADMIN')  %}
+                            <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_logout') }}">admin</a>
+                    </li>
+                                {% endif %}
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">Connexion</a>
@@ -42,7 +48,7 @@
                             Dropdown
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="{{ path("admin_civil") }}">civil</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
