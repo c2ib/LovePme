@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Civilite;
+use App\Entity\Type;
 use App\Form\CiviliteType;
 use App\Repository\CiviliteRepository;
 use App\Repository\UserRepository;
@@ -53,5 +54,15 @@ class AdminController extends AbstractController
             'civilite' => $civilites
             ));
 
+    }
+
+    /**
+     * @Route("/type", name="type")
+     */
+    public function makeType(){
+        $type = new Type();
+
+
+        return $this->render('admin/type.html.twig');
     }
 }

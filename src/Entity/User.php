@@ -114,6 +114,16 @@ class User implements UserInterface
      */
     private $city;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Civilite::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $civilite;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="users")
+     */
+    private $type;
+
     public function __construct()
     {
         $this->actions = new ArrayCollection();
@@ -448,6 +458,40 @@ class User implements UserInterface
     public function setCity(?string $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCivilite(): ?Civilite
+    {
+        return $this->civilite;
+    }
+
+    public function setCivilite(?Civilite $civilite): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($civilite === null && $this->civilite !== null) {
+            $this->civilite->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($civilite !== null && $civilite->getUser() !== $this) {
+            $civilite->setUser($this);
+        }
+
+        $this->civilite = $civilite;
+
+        return $this;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

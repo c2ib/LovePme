@@ -22,10 +22,15 @@ class Civilite
      */
     private $title;
 
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="civilite", cascade={"persist", "remove"})
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
+    } 
 
     public function getTitle(): ?string
     {
@@ -35,6 +40,18 @@ class Civilite
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

@@ -15,13 +15,20 @@
                 <h2 style="text-align: center">Inscription au Carnet d'annonces</h2>
     {# {% form_theme form 'foundation_5_layout.html.twig' %} #}
 
-                {{ form_start(registrationForm) }}<br>
-                {{ form_row(registrationForm.email) }}<br>
-                {{ form_row(registrationForm.plainPassword, {
-                    label: 'Password'
-                }) }}<br>
+                {{ form_start(registrationForm) }}
+
+
+                {{ form_row(registrationForm.type) }}<br>
+                {{ form_row(registrationForm.civilite) }}<br>
                 {{ form_row(registrationForm.lastName, {label: 'prenom'}) }}<br>
                 {{ form_row(registrationForm.firstName, {label: 'nom'}) }}<br>
+                {{ form_row(registrationForm.email) }}<br>
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'mot de passe'
+                }) }}<br>
+                {{ form_row(registrationForm.confirmPassword, {
+                    label: 'confirmation'
+                }) }}<br>
                 {{ form_row(registrationForm.birthDate)}}<br>
                 {{ form_row(registrationForm.phone)}}<br>
                 {{ form_row(registrationForm.adresse)}}<br>
