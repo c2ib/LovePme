@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FormeLegale{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+    <h1 style="text-align: center">Creer nouvelle Forme Légale</h1>
+
+    {{ include('forme_legale/_form.html.twig') }}
+
+    <a href="{{ path('forme_legale_index') }}">retour liste</a>
+        </div>
+    </div>
+{% endblock %}

@@ -60,11 +60,6 @@ class Company
     private $siret;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $formLegal;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $isActive;
@@ -103,6 +98,16 @@ class Company
      * @ORM\OneToMany(targetEntity=Ordre::class, mappedBy="idSociete", orphanRemoval=true)
      */
     private $ordres;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $city;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=FormeLegale::class, inversedBy="companies")
+     */
+    private $forme_legale;
 
     public function __construct()
     {
@@ -208,18 +213,6 @@ class Company
     public function setSiret(int $siret): self
     {
         $this->siret = $siret;
-
-        return $this;
-    }
-
-    public function getFormLegal(): ?string
-    {
-        return $this->formLegal;
-    }
-
-    public function setFormLegal(string $formLegal): self
-    {
-        $this->formLegal = $formLegal;
 
         return $this;
     }
@@ -370,6 +363,30 @@ class Company
                 $ordre->setIdSociete(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getFormeLegale(): ?FormeLegale
+    {
+        return $this->forme_legale;
+    }
+
+    public function setFormeLegale(?FormeLegale $forme_legale): self
+    {
+        $this->forme_legale = $forme_legale;
 
         return $this;
     }

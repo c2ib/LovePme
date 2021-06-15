@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormeLegale index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+
+            <h1>FormeLegale index</h1>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Shortname</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for forme_legale in forme_legales %}
+                    <tr>
+                        <td>{{ forme_legale.id }}</td>
+                        <td>{{ forme_legale.name }}</td>
+                        <td>{{ forme_legale.shortname }}</td>
+                        <td>
+                            <a href="{{ path('forme_legale_show', {'id': forme_legale.id}) }}">show</a>
+                            <a href="{{ path('forme_legale_edit', {'id': forme_legale.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('forme_legale_new') }}">Create new</a>
+        </div>
+    </div>
+{% endblock %}
