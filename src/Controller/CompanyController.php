@@ -22,7 +22,7 @@ class CompanyController extends AbstractController
     {
         $companies=$companyRepository->findAll();
         return $this->render('company/index.html.twig', [
-            'companies' => $companies
+            'compa' => $companyRepository->findAll(),
         ]);
     }
 
