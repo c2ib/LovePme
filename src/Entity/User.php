@@ -132,6 +132,11 @@ class User implements UserInterface
         $this->annonces = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->firstName;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

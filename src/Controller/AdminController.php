@@ -28,6 +28,13 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/get_actions", name="get_actions")
+     */
+    public function giveActions(){
+        $user = $this->getUser();
+    }
+
+    /**
      * @Route("/civil", name="civil")
      */
     public function makeCivil(Request $request, UserRepository $userRepository, CiviliteRepository $civiliteRepository){
