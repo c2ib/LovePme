@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Civil;
 use App\Entity\Civilite;
+use App\Entity\RegistreTitre;
 use App\Entity\Type;
 use App\Form\CiviliteType;
+use App\Form\CivilType;
+use App\Form\RegistreType;
 use App\Repository\CiviliteRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,10 +32,40 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/get_actions", name="get_actions")
+     * @Route("/attribution", name="attribution")
      */
-    public function giveActions(){
-        $user = $this->getUser();
+    public function attributionAction(){
+        $form=$this->createForm();
+    }
+
+    /**
+     * @Route("/registre/actions", name="registre_actions")
+     */
+    public function giveActions(Request $request){
+        //$user = $this->getUser();
+        $registre = new RegistreTitre();
+        $form= $this->createForm(RegistreType::class,$registre);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+           // dd($registre->getAction());
+            //dd($registre->getAction()['societe']->getName());
+            $em=$this->getDoctrine()->getManager();
+            $registre->setCreatedAt(new \DateTime());
+            //dd($registre);
+            $em->persist($registre);
+            $em->flush();
+
+            $this->addFlash('success',$registre->getQuantity().' actions transmises sans erreur');
+
+                return $this->redirectToRoute('home');
+        }
+
+        return $this->render('registre/index.html.twig',array(
+            'form' => $form->createView()
+        ));
+
     }
 
     /**
@@ -71,5 +105,22 @@ class AdminController extends AbstractController
 
 
         return $this->render('admin/type.html.twig');
+    }
+
+    /**
+     * @Route("/civily", name="civil")
+     */
+    public function civilCreate(Request $request){
+        $civil = new Civil();
+        $form = $this->createForm(CivilType::class,$civil);
+            $form->handleRequest($request);
+            if($form->isSubmitted() && $form->isValid()){
+              //dd($civil);
+              $em=$this->getDoctrine()->getManager();
+              $em->persist($civil);
+              $em->flush();
+            }
+
+            return $this->render('admin/civil.html.twig',array('form' => $form->createView()));
     }
 }

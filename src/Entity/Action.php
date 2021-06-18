@@ -35,15 +35,21 @@ class Action
      */
     private $annonces;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=RegistreTitre::class, mappedBy="action")
+     */
+    private $registreTitres;
+
     public function __construct()
     {
         $this->actionnaire = new ArrayCollection();
         $this->annonces = new ArrayCollection();
+        $this->registreTitres = new ArrayCollection();
     }
 
     public function __toString()
     {
-        return $this->id;
+        return $this->societe->getName();
     }
 
     public function getId(): ?int
@@ -112,6 +118,33 @@ class Action
             if ($annonce->getCodeAction() === $this) {
                 $annonce->setCodeAction(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RegistreTitre[]
+     */
+    public function getRegistreTitres(): Collection
+    {
+        return $this->registreTitres;
+    }
+
+    public function addRegistreTitre(RegistreTitre $registreTitre): self
+    {
+        if (!$this->registreTitres->contains($registreTitre)) {
+            $this->registreTitres[] = $registreTitre;
+            $registreTitre->addAction($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRegistreTitre(RegistreTitre $registreTitre): self
+    {
+        if ($this->registreTitres->removeElement($registreTitre)) {
+            $registreTitre->removeAction($this);
         }
 
         return $this;
