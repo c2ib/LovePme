@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Civil;
 use App\Entity\Civilite;
 use App\Entity\Type;
 use App\Entity\User;
@@ -27,9 +28,9 @@ class RegistrationFormType extends AbstractType
             ->add('type', EntityType::class,[
                 'class' => Type::class,
                 'choice_label' => 'name'
-            ])->add('civilite', EntityType::class,[
-                'class' => Civilite::class,
-                'choice_label' => 'title'
+            ])->add('civility', EntityType::class,[
+                'class' => Civil::class,
+                'choice_label' => 'titre'
             ])
             ->add('email')
             ->add('agreeTerms', CheckboxType::class, [

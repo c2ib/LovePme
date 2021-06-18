@@ -20,7 +20,7 @@ final class Version20210615112226 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE company ADD city VARCHAR(50) NOT NULL');
+       // $this->addSql('ALTER TABLE company ADD city VARCHAR(50) NOT NULL');
     }
 
     public function down(Schema $schema): void

@@ -124,12 +124,34 @@ class User implements UserInterface
      */
     private $type;
 
+    /**
+      * @ORM\ManyToMany(targetEntity=RegistreTitre::class, mappedBy="user")
+     */
+    private $registreTitres;
+
+    /**
+     * @ORM\OneToMany(targetEntity=RegistreTitre::class, mappedBy="auteur")
+     */
+    private $auteurRegistre;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Civil::class)
+     */
+    private $civility;
+
     public function __construct()
     {
         $this->actions = new ArrayCollection();
         $this->documents = new ArrayCollection();
         $this->ordres = new ArrayCollection();
         $this->annonces = new ArrayCollection();
+        $this->registreTitres = new ArrayCollection();
+        $this->auteurRegistre = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->firstName;
     }
 
     public function getId(): ?int
@@ -492,6 +514,75 @@ class User implements UserInterface
     public function setType(?Type $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RegistreTitre[]
+     */
+    public function getRegistreTitres(): Collection
+    {
+        return $this->registreTitres;
+    }
+
+    public function addRegistreTitre(RegistreTitre $registreTitre): self
+    {
+        if (!$this->registreTitres->contains($registreTitre)) {
+            $this->registreTitres[] = $registreTitre;
+            $registreTitre->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRegistreTitre(RegistreTitre $registreTitre): self
+    {
+        if ($this->registreTitres->removeElement($registreTitre)) {
+            $registreTitre->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RegistreTitre[]
+     */
+    public function getAuteurRegistre(): Collection
+    {
+        return $this->auteurRegistre;
+    }
+
+    public function addAuteurRegistre(RegistreTitre $auteurRegistre): self
+    {
+        if (!$this->auteurRegistre->contains($auteurRegistre)) {
+            $this->auteurRegistre[] = $auteurRegistre;
+            $auteurRegistre->setAuteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAuteurRegistre(RegistreTitre $auteurRegistre): self
+    {
+        if ($this->auteurRegistre->removeElement($auteurRegistre)) {
+            // set the owning side to null (unless already changed)
+            if ($auteurRegistre->getAuteur() === $this) {
+                $auteurRegistre->setAuteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCivility(): ?Civil
+    {
+        return $this->civility;
+    }
+
+    public function setCivility(?Civil $civility): self
+    {
+        $this->civility = $civility;
 
         return $this;
     }
