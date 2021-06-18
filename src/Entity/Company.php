@@ -109,11 +109,20 @@ class Company
      */
     private $forme_legale;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Title::class, inversedBy="company")
+     */
+    private $title;
+
     public function __construct()
     {
         $this->actions = new ArrayCollection();
         $this->documents = new ArrayCollection();
         $this->ordres = new ArrayCollection();
+    }
+
+    public function __toString(){
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -387,6 +396,18 @@ class Company
     public function setFormeLegale(?FormeLegale $forme_legale): self
     {
         $this->forme_legale = $forme_legale;
+
+        return $this;
+    }
+
+    public function getTitle(): ?Title
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?Title $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }

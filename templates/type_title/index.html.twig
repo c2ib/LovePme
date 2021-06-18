@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeTitle index{% endblock %}
+
+{% block body %}
+    <h1>TypeTitle index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_title in type_titles %}
+            <tr>
+                <td>{{ type_title.id }}</td>
+                <td>{{ type_title.name }}</td>
+                <td>
+                    <a href="{{ path('type_title_show', {'id': type_title.id}) }}">show</a>
+                    <a href="{{ path('type_title_edit', {'id': type_title.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_title_new') }}">Create new</a>
+{% endblock %}
