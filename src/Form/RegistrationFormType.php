@@ -27,10 +27,11 @@ class RegistrationFormType extends AbstractType
             ->add('type', EntityType::class,[
                 'class' => Type::class,
                 'choice_label' => 'name'
-            ])->add('civilite', EntityType::class,[
-                'class' => Civilite::class,
-                'choice_label' => 'title'
             ])
+            //->add('civility', EntityType::class,[
+              //  'class' => Civilite::class,
+               // 'choice_label' => 'title'
+            //])
             ->add('email')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,

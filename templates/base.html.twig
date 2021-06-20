@@ -43,6 +43,7 @@
                         <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
                     </li>
                     {% endif %}
+                    {% if is_granted("ROLE_ADMIN") %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Back-Office
@@ -56,6 +57,7 @@
                             <li><a class="dropdown-item" href="{{ path('company_index') }}">listSociete</a></li>
                         </ul>
                     </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
                     </li>

@@ -27,7 +27,6 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
-
     /**
      * @ORM\Column(type="json")
      */
@@ -113,11 +112,6 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $city;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Civilite::class, mappedBy="user", cascade={"persist", "remove"})
-     */
-    private $civilite;
 
     /**
      * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="users")
