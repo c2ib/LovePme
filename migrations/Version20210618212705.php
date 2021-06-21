@@ -20,7 +20,11 @@ final class Version20210618212705 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
+<<<<<<< HEAD:migrations/Version20210618212705.php
         $this->addSql('ALTER TABLE registre_titre DROP actionnaire_id');
+=======
+       // $this->addSql('ALTER TABLE company ADD city VARCHAR(50) NOT NULL');
+>>>>>>> 5bb005555c74dfbed583bc7762ecd99d32228700:migrations/Version20210615112226.php
     }
 
     public function down(Schema $schema): void

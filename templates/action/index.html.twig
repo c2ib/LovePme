@@ -3,6 +3,7 @@
 {% block title %}Action index{% endblock %}
 
 {% block body %}
+<<<<<<< HEAD
     <h1>Action index</h1>
 
     <table class="table">
@@ -32,4 +33,45 @@
     </table>
 
     <a href="{{ path('action_new') }}" class="btn btn-primary">nouveau registre</a>
+=======
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1>Action index</h1>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for action in actions %}
+                        <tr>
+                            <td>{{ action.id }}</td>
+                            <td>{{ action.societe }}</td>
+                            <td>
+                                <a href="{{ path('action_show', {'id': action.id}) }}">show</a>
+                                <a href="{{ path('action_edit', {'id': action.societe}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="2">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{{ path('action_new') }}">Nouvelle Action</a>
+            </div>
+            <div class="col-md-3"></div>
+
+
+        </div>
+    </div>
+
+>>>>>>> 5bb005555c74dfbed583bc7762ecd99d32228700
 {% endblock %}

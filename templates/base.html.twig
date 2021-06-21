@@ -43,7 +43,11 @@
                         <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
                     </li>
                     {% endif %}
+<<<<<<< HEAD
                     {% if is_granted("ROLE_ADMIN") %}
+=======
+                    {% if app.user %}
+>>>>>>> 5bb005555c74dfbed583bc7762ecd99d32228700
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Back-Office
@@ -55,9 +59,16 @@
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{ path('company_new') }}">Societe</a></li>
                             <li><a class="dropdown-item" href="{{ path('company_index') }}">listSociete</a></li>
+<<<<<<< HEAD
                             <li><a class="dropdown-item" href="{{ path('action_index') }}">Actions</a></li>
                             <li><a class="dropdown-item" href="{{ path('registre_index') }}">Registres</a></li>
+=======
+                            <li><a class="dropdown-item" href="{{ path('action_new') }}">Actions</a></li>
+                            <li><a class="dropdown-item" href="{{ path('user_show',{id:app.user.id}) }}">user</a></li>
+                                <li><a class="dropdown-item" href="{{ path('admin_registre_actions') }}">registre</a></li>
+>>>>>>> 5bb005555c74dfbed583bc7762ecd99d32228700
                         </ul>
+                            {% endif %}
                     </li>
                     {% endif %}
                     <li class="nav-item">
@@ -65,7 +76,7 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="{%  if app.user.email  is defined %}{{ app.user.email }}{% endif %}" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="{%  if app.user.email  is defined %}{{ app.user.lastName }}{% endif %}" aria-label="Search">
                     <button class="btn btn-outline-light" type="submit">rechercher</button>
                 </form>
             </div>
