@@ -26,19 +26,25 @@ class Action
     private $societe;
 
     /**
-     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="actions")
-     */
-    private $actionnaire;
-
-    /**
      * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="codeAction", orphanRemoval=true)
      */
     private $annonces;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Registre::class, mappedBy="action")
+     */
+    private $registres;
 
     public function __construct()
     {
         $this->actionnaire = new ArrayCollection();
         $this->annonces = new ArrayCollection();
+        $this->registres = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->societe->getName();
     }
 
     public function getId(): ?int
@@ -54,30 +60,6 @@ class Action
     public function setSociete(?Company $societe): self
     {
         $this->societe = $societe;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getActionnaire(): Collection
-    {
-        return $this->actionnaire;
-    }
-
-    public function addActionnaire(User $actionnaire): self
-    {
-        if (!$this->actionnaire->contains($actionnaire)) {
-            $this->actionnaire[] = $actionnaire;
-        }
-
-        return $this;
-    }
-
-    public function removeActionnaire(User $actionnaire): self
-    {
-        $this->actionnaire->removeElement($actionnaire);
 
         return $this;
     }
@@ -106,6 +88,36 @@ class Action
             // set the owning side to null (unless already changed)
             if ($annonce->getCodeAction() === $this) {
                 $annonce->setCodeAction(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Registre[]
+     */
+    public function getRegistres(): Collection
+    {
+        return $this->registres;
+    }
+
+    public function addRegistre(Registre $registre): self
+    {
+        if (!$this->registres->contains($registre)) {
+            $this->registres[] = $registre;
+            $registre->setAction($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRegistre(Registre $registre): self
+    {
+        if ($this->registres->removeElement($registre)) {
+            // set the owning side to null (unless already changed)
+            if ($registre->getAction() === $this) {
+                $registre->setAction(null);
             }
         }
 

@@ -118,12 +118,29 @@ class User implements UserInterface
      */
     private $type;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Civility::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $civility;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Registre::class, mappedBy="stocholder")
+     */
+    private $registres;
+
     public function __construct()
     {
         $this->actions = new ArrayCollection();
         $this->documents = new ArrayCollection();
         $this->ordres = new ArrayCollection();
         $this->annonces = new ArrayCollection();
+        $this->registres = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->firstName;
     }
 
     public function getId(): ?int
@@ -456,28 +473,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCivilite(): ?Civilite
-    {
-        return $this->civilite;
-    }
-
-    public function setCivilite(?Civilite $civilite): self
-    {
-        // unset the owning side of the relation if necessary
-        if ($civilite === null && $this->civilite !== null) {
-            $this->civilite->setUser(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($civilite !== null && $civilite->getUser() !== $this) {
-            $civilite->setUser($this);
-        }
-
-        $this->civilite = $civilite;
-
-        return $this;
-    }
-
     public function getType(): ?Type
     {
         return $this->type;
@@ -486,6 +481,48 @@ class User implements UserInterface
     public function setType(?Type $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getCivility(): ?Civility
+    {
+        return $this->civility;
+    }
+
+    public function setCivility(?Civility $civility): self
+    {
+        $this->civility = $civility;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Registre[]
+     */
+    public function getRegistres(): Collection
+    {
+        return $this->registres;
+    }
+
+    public function addRegistre(Registre $registre): self
+    {
+        if (!$this->registres->contains($registre)) {
+            $this->registres[] = $registre;
+            $registre->setStocholder($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRegistre(Registre $registre): self
+    {
+        if ($this->registres->removeElement($registre)) {
+            // set the owning side to null (unless already changed)
+            if ($registre->getStocholder() === $this) {
+                $registre->setStocholder(null);
+            }
+        }
 
         return $this;
     }

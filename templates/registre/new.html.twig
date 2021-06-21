@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Registre{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1>Create new Registre</h1>
+
+                {{ include('registre/_form.html.twig') }}
+
+                <a href="{{ path('registre_index') }}" class="btn btn-info">back to list</a>
+
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+
+{% endblock %}

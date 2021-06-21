@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Civilite;
+use App\Entity\Civility;
 use App\Entity\Type;
 use App\Entity\User;
 use Doctrine\DBAL\Types\TextType;
@@ -28,10 +29,10 @@ class RegistrationFormType extends AbstractType
                 'class' => Type::class,
                 'choice_label' => 'name'
             ])
-            //->add('civility', EntityType::class,[
-              //  'class' => Civilite::class,
-               // 'choice_label' => 'title'
-            //])
+            ->add('civility', EntityType::class,[
+                'class' => Civility::class,
+                'choice_label' => 'titre'
+            ])
             ->add('email')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,

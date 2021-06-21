@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Registre{% endblock %}
+
+{% block body %}
+    <h1>Edit Registre</h1>
+
+    {{ include('registre/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('registre_index') }}" class="btn btn-primary">back to list</a>
+
+    {{ include('registre/_delete_form.html.twig') }}
+{% endblock %}

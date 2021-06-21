@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registre index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+    <h1>Registre index</h1>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Actionnaire</th>
+                    <th>titre</th>
+                    <th>Quantity</th>
+                    <th>Prix_unitaire</th>
+                    <th>date attribution</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for registre in registres %}
+                    <tr>
+                        <td>{{ registre.stocholder }}</td>
+                        <td>{{ registre.action }}</td>
+                        <td>{{ registre.quantity }}</td>
+                        <td>{{ registre.prixUnitaire }}</td>
+                        <td>{{ registre.createdAt ? registre.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>
+                            <a href="{{ path('registre_show', {'id': registre.id}) }}">show</a>
+                            <a href="{{ path('registre_edit', {'id': registre.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <a href="{{ path('registre_new') }}">Create new</a>
+        </div>
+    </div>
+
+
+{% endblock %}

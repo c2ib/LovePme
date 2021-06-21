@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Civility{% endblock %}
+
+{% block body %}
+    <h1>Edit Civility</h1>
+
+    {{ include('civility/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('civility_index') }}">back to list</a>
+
+    {{ include('civility/_delete_form.html.twig') }}
+{% endblock %}
