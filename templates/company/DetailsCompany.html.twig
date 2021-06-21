@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Company{% endblock %}
+
+{% block body %}
+    <section >
+    <h1>Société {{company.name}}</h1>
+<ul>
+           <li> {{company.name}}</li>
+            <li> {{company.formLegal}}</li>
+           <li> {{company.description}}</li>
+           <li> {{company.telephone}}</li>
+           <li> {{company.adresse}}</li>
+           <li> {{company.codePostal}}</li>
+           <li> {{company.rcs}}</li>
+</ul>
+    </section>
+{% endblock %}

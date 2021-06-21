@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello newCompanyController!
+{% endblock %}
+
+{% block body %}
+<table class="table caption-top">
+  <caption>List of annonces</caption>
+  <thead>
+    <tr>
+      <th scope="col">Client</th>
+      <th scope="col">Type</th>
+      <th scope="col">societe</th>
+      <th scope="col">Quantité</th>
+      <th scope="col">Prix unitaire</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr>
+      <th >{{ annonce.idUser.firstName }} {{ annonce.idUser.lastName }}</th>
+      <td>{{ annonce.type}}</td>
+      <td>{{ annonce.quantite}} action de {{ annonce.idSociete.name }}</td>
+      <td>{{ annonce.prixUnitaire }}</td>
+      <td>{{ annonce.quantite}}</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
+

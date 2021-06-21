@@ -32,7 +32,10 @@ class CompanyRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-
+    public function loadCompanyByid(string $id): ?Company
+    {
+        return $this->findOneBy(["id" => $id]);
+    }
     /*
     public function findOneBySomeField($value): ?Company
     {

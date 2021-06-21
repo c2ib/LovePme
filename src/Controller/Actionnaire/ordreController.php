@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Ordre;
 use App\Entity\User;
 use App\Form\OrdreType;
+use App\Repository\OrdreRepository;
 
 class ordreController extends AbstractController
 {
@@ -37,4 +38,33 @@ class ordreController extends AbstractController
                 'formAnnonce' => $form->createView(),
             ]);
         }
+
+    /**
+     * @Route("/backoffice/annonces", name="liste_annonces")
+     */
+    public function listeAnnonce(OrdreRepository $ordreRepo)
+    {
+        $annonces = $ordreRepo->findAll();
+        if (!$annonces) {
+            throw $this->createNotFoundException('La table est vide');
+        }
+        return $this->render('backoffice/listeAnnonce.html.twig', [
+        'annonces' => $annonces,
+        ]);
+}
+    /**
+     * @Route("/backoffice/annonces/{id}", name="Details_Annonces")
+     */
+    public function DetailsAnnonce(int $id)
+    {
+        $annonce = $this->getDoctrine()
+        ->getRepository(Ordre::class)
+        ->find($id);
+        if (!$annonce) {
+            throw $this->createNotFoundException('id existe pas');
+        }
+        return $this->render('backoffice/detailsAnnonce.html.twig', [
+        'annonce' => $annonce,
+        ]);
+}
 }

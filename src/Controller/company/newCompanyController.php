@@ -46,4 +46,19 @@ class newCompanyController extends AbstractController
         'companies' => $companies,
         ]);
     }
+    
+    /**
+     * @Route("/actionnaire/company/{id}", name="company_details")
+     */
+    public function DetailsCompany(int $id)
+    {
+        $company = $this->getDoctrine()
+            ->getRepository(Company::class)
+            ->find($id);
+        if (!$company) {
+            throw $this->createNotFoundException('No product found for id '.$id);
+        }
+        return $this->render('company/DetailsCompany.html.twig',[
+            'company' =>$company ]);
+    }
 }
