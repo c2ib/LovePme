@@ -13,10 +13,7 @@ class ActionType extends AbstractType
     {
         $builder
             ->add('societe')
-<<<<<<< HEAD
-=======
             //->add('actionnaire')
->>>>>>> 5bb005555c74dfbed583bc7762ecd99d32228700
         ;
     }
 

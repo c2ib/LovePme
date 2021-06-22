@@ -44,11 +44,8 @@ class Action
     {
         $this->actionnaire = new ArrayCollection();
         $this->annonces = new ArrayCollection();
-<<<<<<< HEAD
         $this->registres = new ArrayCollection();
-=======
         $this->registreTitres = new ArrayCollection();
->>>>>>> 5bb005555c74dfbed583bc7762ecd99d32228700
     }
 
     public function __toString()

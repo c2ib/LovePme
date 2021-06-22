@@ -139,23 +139,15 @@ class User implements UserInterface
      */
     private $auteurRegistre;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Civil::class)
-     */
-    private $civility;
-
     public function __construct()
     {
         $this->actions = new ArrayCollection();
         $this->documents = new ArrayCollection();
         $this->ordres = new ArrayCollection();
         $this->annonces = new ArrayCollection();
-<<<<<<< HEAD
         $this->registres = new ArrayCollection();
-=======
         $this->registreTitres = new ArrayCollection();
         $this->auteurRegistre = new ArrayCollection();
->>>>>>> 5bb005555c74dfbed583bc7762ecd99d32228700
     }
 
     public function __toString()
@@ -604,15 +596,4 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getCivility(): ?Civil
-    {
-        return $this->civility;
-    }
-
-    public function setCivility(?Civil $civility): self
-    {
-        $this->civility = $civility;
-
-        return $this;
-    }
 }

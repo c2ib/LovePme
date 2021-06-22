@@ -29,14 +29,11 @@ class RegistrationFormType extends AbstractType
             ->add('type', EntityType::class,[
                 'class' => Type::class,
                 'choice_label' => 'name'
-<<<<<<< HEAD
             ])
             ->add('civility', EntityType::class,[
                 'class' => Civility::class,
-=======
             ])->add('civility', EntityType::class,[
                 'class' => Civil::class,
->>>>>>> 5bb005555c74dfbed583bc7762ecd99d32228700
                 'choice_label' => 'titre'
             ])
             ->add('email')
