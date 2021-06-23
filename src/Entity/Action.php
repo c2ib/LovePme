@@ -40,12 +40,18 @@ class Action
      */
     private $registreTitres;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="Action")
+     */
+    private $ads;
+
     public function __construct()
     {
         $this->actionnaire = new ArrayCollection();
         $this->annonces = new ArrayCollection();
         $this->registres = new ArrayCollection();
         $this->registreTitres = new ArrayCollection();
+        $this->ads = new ArrayCollection();
     }
 
     public function __toString()
@@ -152,6 +158,36 @@ class Action
     {
         if ($this->registreTitres->removeElement($registreTitre)) {
             $registreTitre->removeAction($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Annonce[]
+     */
+    public function getAds(): Collection
+    {
+        return $this->ads;
+    }
+
+    public function addAd(Annonce $ad): self
+    {
+        if (!$this->ads->contains($ad)) {
+            $this->ads[] = $ad;
+            $ad->setAction($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAd(Annonce $ad): self
+    {
+        if ($this->ads->removeElement($ad)) {
+            // set the owning side to null (unless already changed)
+            if ($ad->getAction() === $this) {
+                $ad->setAction(null);
+            }
         }
 
         return $this;

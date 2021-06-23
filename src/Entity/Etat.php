@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\TypeTransactionRepository;
+use App\Repository\EtatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TypeTransactionRepository::class)
+ * @ORM\Entity(repositoryClass=EtatRepository::class)
  */
-class TypeTransaction
+class Etat
 {
     /**
      * @ORM\Id
@@ -20,12 +20,12 @@ class TypeTransaction
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=50)
      */
-    private $title;
+    private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="typetransaction")
+     * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="etat")
      */
     private $annonces;
 
@@ -36,7 +36,7 @@ class TypeTransaction
 
     public function __toString()
     {
-        return $this->title;
+return $this->name;
     }
 
     public function getId(): ?int
@@ -44,14 +44,14 @@ class TypeTransaction
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle(string $title): self
+    public function setName(string $name): self
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
@@ -68,7 +68,7 @@ class TypeTransaction
     {
         if (!$this->annonces->contains($annonce)) {
             $this->annonces[] = $annonce;
-            $annonce->setTypetransaction($this);
+            $annonce->setEtat($this);
         }
 
         return $this;
@@ -78,8 +78,8 @@ class TypeTransaction
     {
         if ($this->annonces->removeElement($annonce)) {
             // set the owning side to null (unless already changed)
-            if ($annonce->getTypetransaction() === $this) {
-                $annonce->setTypetransaction(null);
+            if ($annonce->getEtat() === $this) {
+                $annonce->setEtat(null);
             }
         }
 

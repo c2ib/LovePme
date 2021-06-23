@@ -18,25 +18,9 @@ class Annonce
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Action::class, inversedBy="annonces")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $codeAction;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $quantite;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $copyqte;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $choix;
 
     /**
      * @ORM\Column(type="datetime")
@@ -59,32 +43,32 @@ class Annonce
     private $UpdatedAt;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $etat;
-
-    /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="annonces")
      * @ORM\JoinColumn(nullable=false)
      */
     private $iduser;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Etat::class, inversedBy="annonces")
+     */
+    private $etat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Action::class, inversedBy="ads")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Action;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=TypeTransaction::class, inversedBy="annonces")
+     */
+    private $typetransaction;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCodeAction(): ?Action
-    {
-        return $this->codeAction;
-    }
-
-    public function setCodeAction(?Action $codeAction): self
-    {
-        $this->codeAction = $codeAction;
-
-        return $this;
-    }
 
     public function getQuantite(): ?int
     {
@@ -98,29 +82,6 @@ class Annonce
         return $this;
     }
 
-    public function getCopyqte(): ?int
-    {
-        return $this->copyqte;
-    }
-
-    public function setCopyqte(int $copyqte): self
-    {
-        $this->copyqte = $copyqte;
-
-        return $this;
-    }
-
-    public function getChoix(): ?string
-    {
-        return $this->choix;
-    }
-
-    public function setChoix(string $choix): self
-    {
-        $this->choix = $choix;
-
-        return $this;
-    }
 
     public function getDateLimite(): ?\DateTimeInterface
     {
@@ -170,18 +131,6 @@ class Annonce
         return $this;
     }
 
-    public function getEtat(): ?bool
-    {
-        return $this->etat;
-    }
-
-    public function setEtat(bool $etat): self
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
-
     public function getIduser(): ?User
     {
         return $this->iduser;
@@ -190,6 +139,42 @@ class Annonce
     public function setIduser(?User $iduser): self
     {
         $this->iduser = $iduser;
+
+        return $this;
+    }
+
+    public function getEtat(): ?Etat
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(?Etat $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getAction(): ?Action
+    {
+        return $this->Action;
+    }
+
+    public function setAction(?Action $Action): self
+    {
+        $this->Action = $Action;
+
+        return $this;
+    }
+
+    public function getTypetransaction(): ?TypeTransaction
+    {
+        return $this->typetransaction;
+    }
+
+    public function setTypetransaction(?TypeTransaction $typetransaction): self
+    {
+        $this->typetransaction = $typetransaction;
 
         return $this;
     }
