@@ -17,8 +17,6 @@ class HomeController extends AbstractController
     public function index(CompanyRepository  $companyRepository, Request $request): Response
     {
 
-        $session=$request->getSession();
-         dd($session);
 
         return $this->render('home/index.html.twig', [
             'compa' => $companyRepository->findAll(),
