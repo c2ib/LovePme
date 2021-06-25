@@ -15,9 +15,9 @@
     </tr>
   </thead>
   {% for companie in companies %}
-  <tbody >
+  <tbody border=0>
     <tr>
-    <th scope="row"><a href="{{path('company_details', {'id': companie.id})}}" class="btn btn-primary">{{ companie.name }}</a>
+    <th scope="row"><a href="{{path('company_details', {'id': companie.id})}}" >{{ companie.name }}</a>
       </th>
       <td>{{ companie.formLegal }}</td>
       <td>{{ companie.siret}}</td>

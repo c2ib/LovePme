@@ -6,9 +6,13 @@ use App\Repository\CompanyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @ORM\Entity(repositoryClass=CompanyRepository::class)
+ */
+/**
+ * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Company
 {
@@ -104,6 +108,12 @@ class Company
      */
     private $ordres;
 
+   /**
+     * @Vich\UploadableField(mapping="company_logo", fileNameProperty="logo")
+     * @var File
+     */
+    private $logolink;
+
     public function __construct()
     {
         $this->actions = new ArrayCollection();
@@ -175,8 +185,10 @@ class Company
 
         return $this;
     }
-
-    public function getLogo(): ?string
+    /**
+     * @return File|null
+     */
+    public function getLogo(): ?File
     {
         return $this->logo;
     }
@@ -376,4 +388,16 @@ class Company
     public function __toString() {
         return $this->name;
         }
+
+    public function getLogolink(): ?string
+    {
+        return $this->logolink;
+    }
+
+    public function setLogolink(?string $logolink): self
+    {
+        $this->logolink = $logolink;
+
+        return $this;
+    }
 }

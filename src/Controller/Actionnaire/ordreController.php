@@ -57,7 +57,6 @@ class ordreController extends AbstractController
      */
     public function DetailsAnnonce(int $id)
     {
-        // mes tests
         $annonce = $this->getDoctrine()
         ->getRepository(Ordre::class)
         ->find($id);
